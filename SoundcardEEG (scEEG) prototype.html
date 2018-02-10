@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0044)http://openeeg.sourceforge.net/doc/hw/sceeg/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <!--<base href="http://openeeg.sourceforge.net/doc/">--><base href=".">
+    <title>SoundcardEEG (scEEG) prototype</title>
+
+    <link href="./SoundcardEEG (scEEG) prototype_files/main.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+	  <td align="left" valign="top" width="180">
+	    <a href="http://openeeg.sourceforge.net/doc/index.html"><img border="0" width="170" height="146" src="./SoundcardEEG (scEEG) prototype_files/banner4.jpg" alt="OpenEEG logo"></a><br>
+	    <br>
+	    
+
+
+
+<!-- This HTML is enclosed in the left <td></td> of the page. NOTE: All links to anything under /doc/ should be relative links, or else they won't work properly when the pages run under /tmp/ for testing. In fact, there should be no mention to /doc/ in any HTML file under /doc/ except for in the headfoot?.html files. -->
+
+
+
+
+
+<a href="http://openeeg.sourceforge.net/doc/index.html">Home</a><br>
+
+<br>
+
+General:<br>
+
+<tt>&nbsp;</tt><a href="http://openeeg.sourceforge.net/doc/WARNING.html">WARNING</a><br>
+
+<tt>&nbsp;</tt><a href="http://openeeg.sourceforge.net/doc/faq.html">FAQ</a><br>
+
+<tt>&nbsp;</tt><a href="http://openeeg.sourceforge.net/doc/links.html">Links
+and reading</a><br>
+
+<tt>&nbsp;</tt><a href="http://openeeg.sourceforge.net/doc/wb2004.html">Animated
+project intro</a><br>
+
+<tt>&nbsp;</tt><a href="http://openeeg.sourceforge.net/doc/SimpleEEG/">Simple
+EEG instructions</a><br>
+
+<br>
+
+<a href="http://openeeg.sourceforge.net/doc/lists.html">Community Links</a><br>
+
+<tt>&nbsp;</tt><a href="http://lists.sourceforge.net/lists/listinfo/openeeg-list">Main
+mailing list</a><br>
+
+<tt>&nbsp;</tt><a href="http://lists.sourceforge.net/lists/listinfo/openeeg-software-dev">Software-dev
+list</a><br>
+
+<tt>&nbsp;</tt><a href="http://wiki.asiaquake.org/openeeg/published/HomePage">Wiki</a><br>
+
+<tt>&nbsp;</tt><a href="http://www.sf.net/projects/openeeg">SourceForge page</a><br>
+
+<br>
+
+<a href="http://openeeg.sourceforge.net/doc/hw/">Hardware:</a><br>
+
+<tt>&nbsp;</tt><a href="http://openeeg.sourceforge.net/doc/modeeg/modeeg.html">ModularEEG</a><br>
+
+<tt>&nbsp;</tt><a href="http://openeeg.sourceforge.net/doc/hw/electrodes/">Electrodes</a><br>
+
+<tt>&nbsp;</tt><tt>&nbsp;</tt><a href="http://openeeg.sourceforge.net/doc/hw/ae.html">Active</a><br>
+
+<tt>&nbsp;</tt><tt>&nbsp;</tt><a href="http://openeeg.sourceforge.net/doc/hw/electrodes/passive/">Passive</a><br>
+
+<tt>&nbsp;</tt><a href="http://openeeg.sourceforge.net/doc/hw/sceeg.html">soundcardEEG</a><br>
+
+<tt>&nbsp;</tt><a href="http://openeeg.sourceforge.net/doc/hw/calibrator/">EEG Calibrator</a><br>
+
+<tt>&nbsp;</tt><a href="http://openeeg.sourceforge.net/doc/hw/#othersites">EEG
+elsewhere</a><br>
+
+<tt>&nbsp;</tt><a href="http://openeeg.sourceforge.net/doc/hw/Olimex.html">Olimex</a><br>
+
+<tt>&nbsp;</tt><a href="http://openeeg.sourceforge.net/doc/hw/Mindfield.html">Mindfield</a><br>
+
+<br>
+
+<a href="http://openeeg.sourceforge.net/doc/sw/">Software</a><br>
+
+<tt>&nbsp;</tt><a href="http://openeeg.sourceforge.net/doc/sw/NeuroServer">Neuroserver</a><br>
+
+<tt>&nbsp;</tt><a href="http://www.bioera.net/">BioEra</a><br>
+
+<tt>&nbsp;</tt><a href="http://www.shifz.org/brainbay/">BrainBay</a><br>
+
+<tt>&nbsp;</tt><a href="http://www.webkitchen.com/brainathlon/">Brainathlon</a><br>
+
+<tt>&nbsp;</tt><a href="http://www.dcc.uchile.cl/~peortega/abi/">ABI BCI</a><br>
+
+<tt>&nbsp;</tt><a href="http://uazu.net/bwview/">BWView</a><br>
+
+<tt>&nbsp;</tt><a href="http://uazu.net/eegmir/">EEGMIR</a><br>
+
+<tt>&nbsp;</tt><a href="http://www.realization.org/page/topics/electric_guru.htm">ElectricGuru</a><br>
+
+<tt>&nbsp;</tt><a href="http://www.cyberevolution.com/">BioExplorer</a><br>
+
+<br>
+
+<a href="http://sourceforge.net/"><img src="./SoundcardEEG (scEEG) prototype_files/sflogo.php" alt="SourceForge Logo" border="0" height="31" width="88"></a><br>
+
+<br>
+
+The text and graphics of this site are released under a <a href="http://openeeg.sourceforge.net/doc/license.html">Creative Commons license</a>
+unless otherwise
+stated.<br>
+
+<br>
+
+<a href="http://openeeg.sourceforge.net/doc/license.html"><img src="./SoundcardEEG (scEEG) prototype_files/cclogo.gif" alt="Creative Commons logo" border="0" height="31" width="88"></a>
+
+
+
+	  </td>
+	  <td align="left" valign="top" width="20">
+	    &nbsp;
+	  </td>
+	  <td align="left" valign="top">
+	    <h1>SoundcardEEG (scEEG) prototype</h1>
+	    
+
+
+
+<h3>The idea</h3>
+<p>
+Everyone has a sound input to their computer these days. If we used
+it to record EEG signals, the EEG hardware itself would be simpler and
+cost less.
+</p>
+<p>
+There is only one problem: Most audio systems, including sound cards,
+filter out frequencies below 20 Hz. The signals we want to capture are
+mostly below this frequency, so we can not just plug in the EEG amps
+and go.
+</p>
+<p>
+There are a variety of modulation schemes to get past the filter.  You take
+a varying input voltage (say EEG), which is translated to an output sine wave of 
+of varying:
+</p><ul>
+	<li><a href="http://en.wikipedia.org/wiki/Frequency">Frequency</a> (Frequency Modulation, FM)</li>
+	<li><a href="http://en.wikipedia.org/wiki/Amplitude">Amplitude</a> (Amplitude Modulation, AM)</li>
+</ul>
+<p></p>
+<p>
+We can for example build a frequency modulator which takes input voltages between
+1 and 2 volts and let it produce a wave as output that changes frequency
+between 2 kHz and 4 kHz, depending on the input.
+The output is still well within the audio range, but far above the 20Hz
+that is filtered out. It all works as long as the input signal varies at
+a frequency much less than 1 kHz.
+</p>
+<p>
+When the modulated signal has been captured by the sound card, it is
+demodulated to its original form, in software.
+</p>
+<p>
+The whole signal chain looks something like this:
+</p>
+<p>
+Brain =&gt; EEG amplifier =&gt; hardware modulator =&gt; sound card =&gt; software demodulator
+</p>
+
+<h3>EEG Probe project</h3>
+
+<ul>
+	<li>Theory of Operation</li>
+	<ul>
+		<li>The <a href="http://openeeg.sourceforge.net/doc/hw/sceeg/EEGProbeProject.ppt">EEG Probe Project</a> (Microsoft Powerpoint)</li>
+	</ul>
+	<li>Hardware</li>
+	<ul>
+		<li>The Dual Channel FM Unit</li>
+		<ul>
+			<li><a href="http://openeeg.sourceforge.net/doc/hw/sceeg/DualChannelFMUnit-Sheet1.jpg">Sheet 1</a></li>
+			<li><a href="http://openeeg.sourceforge.net/doc/hw/sceeg/DualChannelFMUnit-Sheet2.jpg">Sheet 2</a></li>
+		</ul>
+		<li>The Dual Channel AM Unit</li>
+		<ul>
+			<li><a href="http://openeeg.sourceforge.net/doc/hw/sceeg/DualChannelAMUnit-Sheet1.jpg">Sheet 1</a></li>
+			<li><a href="http://openeeg.sourceforge.net/doc/hw/sceeg/DualChannelAMUnit-Sheet2.jpg">Sheet 2</a></li>
+		</ul>
+		<li>Single Channel AM Unit <a href="http://openeeg.sourceforge.net/doc/hw/sceeg/SingleChannelAMUnit-Sheet1.jpg">Sheet 1</a></li>
+	</ul>
+	<li>Software</li>
+	<ul>
+		<li><a href="http://openeeg.sourceforge.net/doc/hw/sceeg/EEGProbe.exe">EEG Probe</a> software.  </li>
+		<li><a href="http://openeeg.sourceforge.net/doc/hw/sceeg/Sound_IF.exe">NeuroServer</a> interface.  (see also <a href="http://openeeg.sourceforge.net/doc/sw/NeuroServer/">NeuroServer</a> documentation)</li>
+	</ul>
+</ul>
+
+<p>In July 2005 Grant Connell took on the challenge of building a prototype sound card EEG unit. The first unit consisted of a two channel AM modulated version with a built-in power supply. It is 
+compatible with 12-volt power cubes. There were several breadboards built before the final two boards (input amplifier and modulator) versions were completed. The AM version was successful with 
+achieving about 65 dB of dynamic range performance. An existing oscilloscope software application was modified to accept the modulated signal from the prototype.</p>
+
+<p>The second prototype was a single channel AM unit that reduced the modulation circuitry and the size of the unit was reduced to 2" by 4". The unit also included onboard regulators and was operated 
+from a 9-volt battery. The unit design also switched from an analog local oscillator (LO) to a digital version (square wave oscillator). This reduced both the size and power consumption of the 
+unit.</p>
+
+<p>The third breadboard and then prototyped was a dual channel FM unit and due to reduced circuitry of implementing the FM modulation was built into the 2" by 4" enclosure with a 9-volt battery 
+included. The total current drain is approximately 6.5 ma. The unit uses two CMOS digital local oscillators. The dual channel AM and FM units now achieve about 80 dB of dynamic range performance.  
+Power drain is less than 6 mA.</p>
+
+<p>A new software application was developed specifically for EEG display and instrumentation. The software is able to receive data from both AM and FM units. The software incorporates individual channel 
+gain and offset controls with a real time strip chart and vertical FFT displays. A built in variable bandwidth filter can be adjusted by moving cursor lines about the spectrum displays.  The second 
+software application interfaces with NeuroServer.</p>
+
+<p>A description of the theory of operation of the AM and FM modulation schemes and the prototype development (with pictures of the units) is can be downloaded from <a href="http://openeeg.sourceforge.net/doc/hw/sceeg/EEGProbeProject.ppt"> EEG
+Probe Project</a>. The single schematic of the AM prototype unit can be downloaded from <a href="http://openeeg.sourceforge.net/doc/hw/sceeg/SingleChannelAMUnit-Sheet1.jpg">AM Unit Sheet 1</a>. The FM unit schematic can be downloaded from 
+<a href="http://openeeg.sourceforge.net/doc/hw/sceeg/DualChannelFMUnit-Sheet1.jpg">FM Unit Sheet 1</a> and <a href="http://openeeg.sourceforge.net/doc/hw/sceeg/DualChannelFMUnit-Sheet2.jpg">FM Unit Sheet 2</a>. The software for the prototypes can be downloaded from 
+<a href="http://openeeg.sourceforge.net/doc/hw/sceeg/EEGProbe.exe">EEG Probe Install</a> and <a href="http://openeeg.sourceforge.net/doc/hw/sceeg/Sound_IF.exe">NeuroServer</a> Interface. The software will be self-extracting zip files.  After the install files have been 
+extracted from the Zip files to the directory of your choice, run the Setup.exe program to install the applications.</p>
+
+<p>The prototypes are simply handcrafted units. If there is enough interest in the sound card concept, printed circuit boards can be built and made available. The designs are simple enough that 
+through-hole technology could be use for kit building.</p>
+
+
+<h3>Unnamed - (Project status for similar incomplete project)</h3>
+
+<h4>Hardware</h4>
+<p>
+A group member, Ian Vincent, put in a tremendous amount of work on a
+prototype several months ago, but ran into trouble with parasitic
+signals and instability in the venerable
+<a href="http://www.google.com/search?q=site%3Awww.national.com+lm331">
+LM331</a> chip. This ultimately led him to suspend the project.
+</p>
+<p>
+We are now (July 2004) going back to see if we can get it running.
+Please stay tuned.
+</p>
+<p>In April 2005 Andreas and Jon were working away at it. They're assembling
+some for testing purposes.  </p>
+
+<h4>Software</h4>
+
+<p>
+Thanks to Oren Tirosh, we already have a demodulator prototype,
+written in Python.
+</p>
+<p>The source can be downloaded <a href="http://www.tothink.com/python/openeeg/">HERE</a>.</p>
+<p>An explanation how it works is found in this e-mail:
+<a href="http://sourceforge.net/mailarchive/message.php?msg_id=4830746">
+SCEEG Theory of Operation</a>. Please note that this mail was written
+before we had done any tests so some numbers (like the sample rate) are
+incorrect.
+</p>
+
+
+	  </td>
+	</tr>
+    </tbody></table>
+  
+
+
+
+</body></html>

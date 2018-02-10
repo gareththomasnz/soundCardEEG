@@ -1,0 +1,99 @@
+From: Ian Vincent <vincent@ig...> 
+ Re: SCEEG Theory of Operation   
+2003-05-15 04:28
+ At 04:05 AM 5/15/2003 -0400, you wrote:
+ >On Wed, May 14, 2003 at 02:17:02PM -0400, brian_gr@ho... wrote:
+ > > Hi Oren,
+ > > I wonder if you could be so kind as to give a concise explanation of 
+ > how the
+ > > software will convert the frequency modulated input through the soundcard
+ > > inputs into a sampled data stream.
+ >
+ >The first step in FM demodulation is to clean up the signal a little by
+ >filtering frequencies that are not used by the signal: below 500Hz and
+ >above 3600Hz. The next step is to strip the signal of any amplitude
+ >variations and leave only the phase information. This is known as
+ >limiting.   <clip>
+ 
+ 
+ With all that going on, no wonder the signal is noisy.<g>
+ 
+ Seriously..thanks for that explanation, it helps to know a bit about what 
+ the code is doing and why. It is a whole new world to me..I understand the 
+ analog equivalents much better. There is an awful lot of code written that 
+ is never described in common english, even though it is often annotated and 
+ commented there is often no overall explanation of what it is actually 
+ doing. This is good. Thanks Oren.
+ 
+ Ian
+
+Email Archive: openeeg-list (read-only) Search
+
+From: Oren Tirosh   Re: SCEEG Theory of Operation   
+2003-05-15 01:05
+ On Wed, May 14, 2003 at 02:17:02PM -0400, brian_gr@ho... wrote:
+ > Hi Oren,
+ > I wonder if you could be so kind as to give a concise explanation of how the
+ > software will convert the frequency modulated input through the soundcard
+ > inputs into a sampled data stream. 
+ 
+ The first step in FM demodulation is to clean up the signal a little by
+ filtering frequencies that are not used by the signal: below 500Hz and
+ above 3600Hz. The next step is to strip the signal of any amplitude
+ variations and leave only the phase information. This is known as
+ limiting. 
+ 
+ In analog FM demodulation the limiting step is done with a very high
+ gain amplifier that clips the sinusoidal signal and makes it a square
+ wave, ignoring any unwanted variations in its amplitude.  The digital
+ equivalent uses something called a Hilbert transform to convert the
+ frequency-modulated sinewave from a real to a complex signal. Think of a
+ spiral or a slinky instead of a sinewave (the slinky"s shadow). The
+ Hilbert transform is used to reconstruct the 3D slinky from its 2D
+ shadow. The limiting is then done by dividing each complex sample by its
+ absolute value so the magnitude of all samples is always 1 and they
+ differ only by their angle (i.e. make sure that the slinky is always of
+ the same diameter and the only variations are in the density of turns
+ per unit length - the frequency). 
+ 
+ The signal is then passed through a filter with a linearly increasing
+ frequency response. This converts the signal from frequency modulation
+ to amplitude modulation (this makes the radius of the slinky at each
+ point correspond to the average density of turns in that region). The
+ next step is amplitude demodulation, also known as envelope detection.
+ The analog equivalent is rectification with a diode. Here we calculate
+ the absolute value of each complex sample (the radius of the slinky at
+ each point).
+ 
+ Finally, the signal is decimated, that is, the sampling frequency is 
+ reduced from 11.025kHz to 256.395Hz (decimation by a factor of 43). This 
+ is done by low-pass filtering the signal to 1/43 of its original bandwidth
+ and then throwing away 42 out of each 43 samples. The data from those
+ samples is not lost - it has been averaged into the remaining samples by
+ the filtering and causes their effective resolution to improve.
+ 
+ > How are the two frequency streams resolved to 10+ bits in precisely 4mS?
+ 
+ The resulting samples will be floating point numbers. The effective number 
+ of bits in the result depends on the signal to noise ratio of the incoming 
+ signal. The FM demodulation and bandwidth reduction phases both improve the
+ signal to noise ratio. FM demodulation contributes about 30db and the
+ bandwidth reduction about another 18db so the resulting samples can have
+ a better SNR than that of the audio channel. Of course, if the input signal
+ to the frequency modulator is noisy the FM transport can"t improve it -
+ only faithfully reproduce it. This is also true of regular A/D convesion.
+ 
+ The audio signal is sampled at regular intervals of 1/11025 sec and stored 
+ to memory buffers by the sound card hardware. After decimation by a factor 
+ of 43 the result is a signal sampled at 1/256.395 sec intervals. The actual 
+ processing will be done in blocks of samples of some arbitrary size but this 
+ does not affect the result.
+ 
+ > How much CPU power is required to do this? (ie could 2/ and 3/ run on an old
+ > 500Mhz pentium?) For instance, brainmaster 1.8 can just barely run on a
+ > 200Mhz system using a low cpu intensive serial connection.
+ 
+ I haven"t optimized it yet but it should eventually take less than mp3 
+ decoding.
+ 
+     Oren
